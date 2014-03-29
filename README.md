@@ -34,7 +34,7 @@ Downloads images from all current threads on /wg/ to ~/**cchin**/anime_wallpaper
 
 Installation:
 =============
-Compile the sources of both files and copy executables to /usr/bin.
+Download and compile the sources, copy resulting executable files to /usr/bin.
 ```
 git clone https://github.com/void-null/chin
 cd chin
