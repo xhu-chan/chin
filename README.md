@@ -2,7 +2,7 @@
 
 **Cchin** is another program that uses chin to download images off entire board.
 
-**WARNING:** cchin requires chin executable file to be in /bin/, that is intended behaviour and is going to be changed in near future 
+**WARNING:** cchin requires chin executable file to be in /usr/bin/, that is intended behaviour and is going to be changed in near future 
 
 CHIN
 ====
@@ -31,3 +31,15 @@ Downloads all images from thread number 12345 to ~/chin/wallpapers
 **cchin 4chan.org/w anime_wallpapers**
 
 Downloads images from all current threads on /wg/ to ~/**cchin**/anime_wallpapers
+
+Installation:
+=============
+Compile the sources of both files and copy executables to /usr/bin.
+```
+git clone https://github.com/void-null/chin
+cd chin
+gcc chin.c -o chin
+gcc cchin.c -o cchin
+sudo cp ./chin /usr/bin/chin
+sudo cp ./cchin /usr/bin/cchin
+```
