@@ -18,10 +18,8 @@ while (count>=0){
 	postnum[i]=text[thrlen-count];
 	i++;count--;
 	}
-	
-//printf("The command is: %s",buff); //old debug info
+
 printf("\nThe thread number is: %s",postnum); 
-//printf("\nLink length is: %d\n\n\n",thrlen); //old debug info
 
 	system(buff); //Downloads page source
 
@@ -35,7 +33,7 @@ int total=0;
 
 if (argv[2]!=NULL) sprintf(buff,"%s/chin/%s",home,argv[2]); //Changes download folder according to second argument
 while(i<strlen(whole)){
-	if(whole[i]=='i' && whole[i+1]=='.' && whole[i+2]=='4' && whole[i+3]=='c' && whole[i+4]=='d' && whole[i+5]=='n'){ //whole [i-11] != 'b' is required in order to discard duplicates
+	if(whole[i]=='i' && whole[i+1]=='.' && whole[i+2]=='4' && whole[i+3]=='c' && whole[i+4]=='d' && whole[i+5]=='n'){ //looks for i.4cdn in webpage's source
 			sprintf(link2,"%s",link);
 		while(whole[i+j]!='"'){
 			link[j]=whole[i+j];
