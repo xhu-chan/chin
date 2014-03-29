@@ -6,7 +6,7 @@
 
 CHIN
 ====
-**Usage: chin [URL] [DIR - optional]**
+**Usage: chin URL [DIR]**
 
 Downloads images off specified 4chan thread to ~/chin/**[DIR]**
 
@@ -14,11 +14,11 @@ Uses thread number as default directory name
 
 CCHIN
 =====
-**Usage: cchin [URL] [DIR]**
+**Usage: cchin URL [DIR]**
 
 Downloads all images off specified 4chan board to ~/cchin/**[DIR]**.
 
-**[URL]** is a link to the board, I.E.  4chan.org/g
+**URL** is a link to the board without '/' at the end, I.E.  4chan.org/g
 
 **[DIR]** is directory name inside ~/cchin
 
