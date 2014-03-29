@@ -22,3 +22,12 @@ Downloads all images off specified 4chan board to ~/cchin/**[DIR]**.
 
 **[DIR]** is directory name inside ~/cchin
 
+Examples:
+=========
+**chin https://boards.4chan.org/wg/res/12345 wallpapers**
+
+Downloads all images from thread number 12345 to ~/chin/wallpapers
+
+**cchin 4chan.org/w anime_wallpapers**
+
+Downloads images from all current threads on /wg/ to ~/**cchin**/anime_wallpapers
