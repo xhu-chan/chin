@@ -27,7 +27,7 @@ printf("\nThe page source has been (hopefully) downloaded. Please wait...");
 sprintf(buff,"%s/chin/%s",home,postnum); //Now buff is a path to downloaded file
 FILE *f=fopen(buff,"r");		 //Opens downloaded file
 char whole[PAGE_LENGTH];fgets(whole,PAGE_LENGTH,f); //Writes entire file to char array 'whole'
-char link[LENGTH]={};char wget[LENGTH]={},link2[LENGTH]={};
+char link[34]={};char wget[LENGTH]={},link2[LENGTH]={};
 i=20;					
 int total=0; 
 
