@@ -4,6 +4,13 @@
 
 **WARNING:** cchin requires chin executable file to be in /usr/bin/, that is intended behaviour and is going to be changed in near future 
 
+Features
+========
+* Can be used to download images from single thread or entire board
+* Doesn't redownload existing images, running it again would simply update already existing image database
+* Uses wget, no other dependencies
+
+
 CHIN
 ====
 **Usage: chin URL [DIR]**
