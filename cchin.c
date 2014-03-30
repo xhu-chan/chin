@@ -5,7 +5,7 @@
 #define PAGE_LENGTH 999999
 
 int main(int argc, char *argv[]){
-if(argc<=2){printf("Usage: cchin [URL] [DIR]\n\nDownloads all images off specified 4chan board to ~/cchin/[DIR].\n[URL] is a link to the board, I.E.  4chan.org/g\n[DIR] is directory name inside ~/cchin/\n");return 0;}
+if(argc<=2){printf("Usage: cchin URL DIR\n\nDownloads all images off specified 4chan board to ~/cchin/DIR.\nURL is a link to the board without / at end, I.E.  4chan.org/g\nDIR is directory name inside ~/cchin/\n");return 0;}
 char *home = getenv("HOME");
 char catalog[LENGTH]={}; sprintf(catalog,"%s/cchin/%s/catalog",home,argv[2]);
 char boardname[LENGTH]={};
