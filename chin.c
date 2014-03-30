@@ -8,7 +8,7 @@ int main(int argc, char *argv[]){
 setbuf(stdout, NULL); //Disables line buffering
 char *home = getenv("HOME"); //Gets location of home folder
 char text[LENGTH]={},buff[LENGTH]={},postnum[LENGTH];
-if(argc<=1){printf("Usage: chin [URL] [DIR]\n\nDownloads images off specified 4chan thread to ~/chin/[DIR]\nUses thread number as default directory name\n");return 0;} else
+if(argc<=1){printf("Usage: chin URL DIR\n\nDownloads images off specified 4chan thread to ~/chin/DIR\n");return 0;} else
 sprintf(buff,"wget -N -q -P %s/chin/ ", home); //Forms initial command, "wget -N -q -P ~/chin/"
 {strcat(text,argv[1]); // 
 strcat(buff,text);     // Appends download link to the end of wget command
