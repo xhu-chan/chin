@@ -38,7 +38,7 @@ while(i<strlen(whole)){
 		while(whole[i+j]!='"'){
 			link[j]=whole[i+j];
 			j++;
-			}if(strcmp(link2,link)!=0){total++;printf("\nDownloading image %d: %s",total,link);sprintf(wget,"wget -nc -P %s -q %s ",buff,link);printf("..."); system(wget); printf(" Done!"); i+=strlen(link);sprintf(link," ");} 
+			}if(strcmp(link2,link)!=0){total++;printf("\nDownloading image %d: %s",total,link);sprintf(wget,"wget -nc -P %s -q %s ",buff,link);printf("..."); system(wget); printf(" Done!"); i+=strlen(link);} 
 		}	//Checks if download link is different from previous one to prevent downloading same image twice in a row, and then downloads it
 	i++;j=0;
 	}
