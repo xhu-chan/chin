@@ -1,6 +1,6 @@
-**Chin** is a small program that downloads images from specified 4chan thread using wget.
+**CHIN** is a small program that downloads images from specified 4chan thread using wget.
 
-**Cchin** is another program that uses chin to download images off entire board.
+**CCHIN** is another program that uses chin to download images off entire board.
 
 **WARNING:** cchin requires chin executable file to be in /usr/bin/, that is intended behaviour and is going to be changed in near future 
 
@@ -50,3 +50,10 @@ gcc cchin.c -o cchin
 sudo cp ./chin /usr/bin/chin
 sudo cp ./cchin /usr/bin/cchin
 ```
+
+Facts:
+======
+
+* **CHIN** stads for **CHIN Hoards Images Nicely**
+* Shell script with same functionaity would contain less than 10 strings
+* Abilty to locally archive images off entire board is surpisingly useful and useless at the same time
