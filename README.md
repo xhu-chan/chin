@@ -54,6 +54,6 @@ sudo cp ./cchin /usr/bin/cchin
 Facts:
 ======
 
-* **CHIN** stads for **CHIN Hoards Images Nicely**
+* **CHIN** stands for **CHIN Hoards Images Nicely**
 * Shell script with same functionaity would contain less than 10 strings
 * Ability to locally archive images off entire board is surpisingly useful and useless at the same time
