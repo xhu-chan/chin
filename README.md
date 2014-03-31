@@ -56,4 +56,4 @@ Facts:
 
 * **CHIN** stads for **CHIN Hoards Images Nicely**
 * Shell script with same functionaity would contain less than 10 strings
-* Abilty to locally archive images off entire board is surpisingly useful and useless at the same time
+* Ability to locally archive images off entire board is surpisingly useful and useless at the same time
