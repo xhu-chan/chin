@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
 
 	char text[LENGTH]={},buff[LENGTH]={},postnum[LENGTH];
 
-	//Check for presence of arguments
+	//Checks for presence of arguments
 	if(argc<=2){
 		printf(
 			"Usage: chin URL DIR\n\nDownloads images off specified 4chan thread to ~/chin/DIR\n");
@@ -70,8 +70,7 @@ int main(int argc, char *argv[]){
 	sprintf(buff,"rm %s/chin/%s",home,postnum);
 	system(buff);
 
-	//Default link length is 34 symbols long
-	char link[34]={},old_link[34]={};
+	char link[LENGTH]={};
 	char wget[LENGTH]={};
 
 	//i is starting offset in page's HTML code, to be changed
@@ -87,33 +86,38 @@ int main(int argc, char *argv[]){
 	while(i<strlen(whole)){
 		
 		//Looks for i.4cdn in webpage's source
-		if(  whole[i]=='i' 
+		if(whole[i-2]=='/'
+		&& whole[i-1]=='/'
+		  && whole[i]=='i' 
 		&& whole[i+1]=='.' 
 		&& whole[i+2]=='4' 
 		&& whole[i+3]=='c' 
 		&& whole[i+4]=='d' 
 		&& whole[i+5]=='n')
 		{ 
-			//Writes previous image's URL to 'old_link'
-			sprintf(old_link,"%s",link);
-			
 			//Writes image's URL to 'link'	
 			while(whole[i+j]!='"'){
 				link[j]=whole[i+j];
 				j++;
 			}
 				
-			//Checks if download link is different from previous one 
-			//to prevent downloading same image twice in a row
-			//and then downloads it
-			if(strcmp(old_link,link)!=0){
-				count++;
-				printf("\nDownloading image %d: %s...",count,link);
-				sprintf(wget,"wget -nc -P %s -q %s ",buff,link);
-				system(wget);
-				printf(" Done!");
-				i+=strlen(link);
-			} 
+			//Downloads the image
+			count++;
+			printf("\nDownloading image %d: %s...",count,link);
+			sprintf(wget,"wget -nc -P %s -q %s ",buff,link);
+			system(wget);
+			printf(" Done!");
+			i+=180;
+			
+			//Webm workaround
+			if (link[strlen(link)-1]=='m'){ 
+				link[strlen(link)-1]='\0';}
+			
+			//Broken link workaround
+			if (strlen(link)>40){ 
+				sprintf(link, " ");
+				count--;
+			}	
 		}	
 		i++;j=0;
 	}
