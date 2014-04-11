@@ -29,16 +29,16 @@ int main(int argc, char *argv[]){
 	} 
 
 	
-	//Downloads page's catalog to specific folder, TO BE CHANGED
+	/* Downloads page's catalog to specific folder, TO BE CHANGED */
 	char buff[LENGTH]={};
 	sprintf(buff,"wget -N -q -P %s/cchin/%s %s/catalog",home,argv[2],argv[1]);
 	system(buff); 
 	
-	
+		
 	char catalog[LENGTH]={};
 	sprintf(catalog,"%s/cchin/%s/catalog",home,argv[2]);
 	
-	//Opens catalog file, reads it into char array, removes it
+	/* Opens catalog file, reads it into char array, removes it */
 	char page[PAGE_LENGTH]={}; 
 	FILE *f=fopen(catalog,"r"); 
 	fgets(page,PAGE_LENGTH,f); 
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]){
 
 	char link[LENGTH]={};
 	
-	//i is starting point at which cchin starts looking for thread numbers
+	/* i is starting point at which cchin starts looking for thread numbers */
 	i=5000;
 	j=0; 
 
