@@ -34,7 +34,6 @@ int main(int argc, char *argv[]){
 	sprintf(buff,"wget -N -q -P %s/cchin/%s %s/catalog",home,argv[2],argv[1]);
 	system(buff); 
 	
-	//Forms 
 	
 	char catalog[LENGTH]={};
 	sprintf(catalog,"%s/cchin/%s/catalog",home,argv[2]);
@@ -49,7 +48,7 @@ int main(int argc, char *argv[]){
 	char link[LENGTH]={};
 	
 	//i is starting point at which cchin starts looking for thread numbers
-	i=50000;
+	i=5000;
 	j=0; 
 
 	while(i<strlen(page)){
