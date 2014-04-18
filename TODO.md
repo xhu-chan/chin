@@ -1,11 +1,11 @@
 TODO:
 =====
 * ~~Make it compatible with upcoming namespace changes~~ Done, waiting for the update
-* Replace system() calls
+* Replace system() calls - Almost done and requires testing, waiting for the update
+* Add an ability to stop it properly - Shouldn't be an issue after getting rid of system() calls
 * File format banning
 * External configuration files
 * Reverse bump order archiving (so threads that are going to be deleted soon are archived first)
-* Add an ability to stop it properly 
 * Make it able to run on single board PC's (like Pi and such)
 * Create a makefile
 * (optional) Text archiving (partially done)
