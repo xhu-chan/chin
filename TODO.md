@@ -1,6 +1,6 @@
 TODO:
 =====
-* Make it compatible with upcoming namespace changes
+* ~~Make it compatible with upcoming namespace changes~~ Done, waiting for the update
 * Replace system() calls
 * File format banning
 * External configuration files
