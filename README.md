@@ -1,15 +1,17 @@
-**CHIN** is a small program that downloads images from specified 4chan thread using wget.
+**WARNING:** Installation instructions have changed! Please check them out.
+
+**CHIN** is a small program that downloads images from specified 4chan thread using libcurl or wget.
 
 **CCHIN** is another program that uses chin to download images off entire board.
 
-**WARNING:** cchin requires chin executable file to be in /usr/bin/, that is intended behaviour and is going to be changed in near future 
+
 
 Features
 ========
 * Can be used to download images from single thread or entire board
 * Doesn't redownload existing images, running it again would simply update already existing image database
-* Uses wget, no other dependencies
-
+* Uses either wget or libcurl(default), no other dependencies
+* Partial text archiving (keeps .json files)
 
 CHIN
 ====
@@ -45,8 +47,8 @@ Download and compile the sources, copy resulting executable files to /usr/bin.
 ```
 git clone https://github.com/void-null/chin
 cd chin
-gcc chin.c -o chin
-gcc cchin.c -o cchin
+gcc chin.c -lcurl -o chin
+gcc cchin.c -lcurl -o cchin
 sudo cp ./chin /usr/bin/chin
 sudo cp ./cchin /usr/bin/cchin
 ```
