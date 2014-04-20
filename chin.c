@@ -46,7 +46,8 @@ int main(int argc, char *argv[]){
 	
 	
 	/* Checks for presence of arguments */
-	if(argc<=2){
+	if(argc<=2)
+	{
 		printf(
 			"Usage: chin URL DIR\n\nDownloads images off specified 4chan thread to ~/chin/DIR\n");
 		return 0;
@@ -57,16 +58,18 @@ int main(int argc, char *argv[]){
 	thrlen=strlen(threadURL);
 		
 	
-	/*I don't like those two blocks, will replace them sometime in the future */	
+	/*I don't like those three blocks, will replace them sometime in the future */	
 		
 		/* Extracts thread number and writes it to 'threadnum' */
 		i=thrlen-1;
-		while (threadURL[i]!='/'){
+		while (threadURL[i]!='/')
+		{
 			count++;
 			i--;
 		} 
 		i=0;
-		while (count>=0){
+		while (count>=0)
+		{
 			threadnum[i]=threadURL[thrlen-count];
 			i++;
 			count--;
@@ -75,7 +78,7 @@ int main(int argc, char *argv[]){
 		 /* Extracts board's name */
 		char boardname[LENGTH]={};
 		j=strlen(threadnum);
-		i=thrlen-5-j-1;
+		i=thrlen-8-j-1;
 		count=0;
 		while (threadURL[i]!='/')
 		{
@@ -83,17 +86,38 @@ int main(int argc, char *argv[]){
 			i--;
 		}
 		i=0; 
-		while (count-1>=0){
-			boardname[i]=threadURL[thrlen-count-j-5];
+		while (count-1>=0)
+		{
+			boardname[i]=threadURL[thrlen-count-j-8];
 			i++;
 			count--;
+		}
+		/* Workaroung for namespace changes */
+		if(strcmp("boards.4chan.or",boardname)==0)
+		{
+			sprintf(boardname," ");
+			j=strlen(threadnum);
+			i=thrlen-5-j-1;
+			count=0;
+			while (threadURL[i]!='/')
+			{
+				count++;
+				i--;
+			}
+			i=0; 
+			while (count-1>=0)
+			{
+				boardname[i]=threadURL[thrlen-count-j-5];
+				i++;
+				count--;
+			}
+			
 		}
 		
 	printf("\nDownloading thread  #%s on /%s/, please wait...",threadnum,boardname); 
 	
-	
 	/* Forms .json URL */
-	sprintf(jsonURL, "http://a.4cdn.org/%s/res/%s.json",boardname,threadnum);
+	sprintf(jsonURL, "http://a.4cdn.org/%s/thread/%s.json",boardname,threadnum);
 	
 	/* Old section that uses wget */	
 	/*
@@ -108,32 +132,33 @@ int main(int argc, char *argv[]){
 	
 	/* Beginning of CURL section */
 	{
-	CURL *curl;
-	FILE *img;
-	curl = curl_easy_init();
-	if(curl) {
-		sprintf(mkdir,"mkdir -p %s/chin/%s",home,argv[2]);
-		system(mkdir);
-		
-		/* The following two lines form a workaround that does 2 things:
-		 * 1. Prevents .json file from being erased locally by CURL if it doesn't exist on server
-		 * 2. Preserves old versions which may contain deleted replies
-		 * If you do not want to clubber your local archive with old .json's or
-		 * do not care about text archiving at all, you could safely remove them. */
-		sprintf(backup,"mv --backup=t %s/chin/%s/%s.json %s/chin/%s/%s.json.old 2>/dev/null",home,argv[2],threadnum,home,argv[2],threadnum);
-		system(backup);
-		
-		
-		sprintf(imgpath,"%s/chin/%s/%s.json",home,argv[2],threadnum);
-		img = fopen(imgpath, "wb");
-		printf("\nDownloading .json... ");
-		curl_easy_setopt(curl,CURLOPT_URL,jsonURL);
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,write_data); 
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA,img);
-		curl_easy_perform(curl);
-		printf("Finished!");
-		curl_easy_cleanup(curl);
-		fclose(img);
+		CURL *curl;
+		FILE *img;
+		curl = curl_easy_init();
+		if(curl) 
+		{
+			sprintf(mkdir,"mkdir -p %s/chin/%s",home,argv[2]);
+			system(mkdir);
+			
+			/* The following two lines form a workaround that does 2 things:
+			 * 1. Prevents .json file from being erased locally by CURL if it doesn't exist on server
+			 * 2. Preserves old versions which may contain deleted replies
+			 * If you do not want to clobber your local archive with old .json's or
+			 * do not care about text archiving at all, you could safely remove them. */
+			sprintf(backup,"mv --backup=t %s/chin/%s/%s.json %s/chin/%s/%s.json.old 2>/dev/null",home,argv[2],threadnum,home,argv[2],threadnum);
+			system(backup);
+			
+			
+			sprintf(imgpath,"%s/chin/%s/%s.json",home,argv[2],threadnum);
+			img = fopen(imgpath, "wb");
+			printf("\nDownloading .json... ");
+			curl_easy_setopt(curl,CURLOPT_URL,jsonURL);
+			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,write_data); 
+			curl_easy_setopt(curl, CURLOPT_WRITEDATA,img);
+			curl_easy_perform(curl);
+			printf("Finished!");
+			curl_easy_cleanup(curl);
+			fclose(img);
 		}
 	}
 	/* End of CURL section */
@@ -173,7 +198,8 @@ int main(int argc, char *argv[]){
 			/* Dirty webm workaround */			
 			extension[4]='\0';
 			
-			while(whole[i+j]!='"'){
+			while(whole[i+j]!='"')
+			{
 				extension[j]=whole[i+j];
 				j++;
 			}
@@ -196,7 +222,7 @@ int main(int argc, char *argv[]){
 			
 			/* Downloads the image */
 			count++;
-			printf("\nDownloading image %d: i.4cdn.org/%s/src/%s%s...",count,boardname,imagenumber,extension);
+			printf("\nDownloading image %d: i.4cdn.org/%s/%s%s...",count,boardname,imagenumber,extension);
 			
 			/* Old wget section */
 			
@@ -214,12 +240,14 @@ int main(int argc, char *argv[]){
 			{	CURL *curl;
 				FILE *img;
 				curl = curl_easy_init();
-				if(curl) {
+				if(curl) 
+				{
 					sprintf(imgpath,"%s/chin/%s/%s%s",home,argv[2],imagenumber,extension);
 					
-					if((img=fopen(imgpath,"r"))==NULL){
+					if((img=fopen(imgpath,"r"))==NULL)
+					{
 						img = fopen(imgpath, "wb");
-						sprintf(wget,"i.4cdn.org/%s/src/%s%s",boardname,imagenumber,extension);
+						sprintf(wget,"i.4cdn.org/%s/%s%s",boardname,imagenumber,extension);
 						curl_easy_setopt(curl,CURLOPT_URL,wget);
 						curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,write_data); 
 						curl_easy_setopt(curl, CURLOPT_WRITEDATA,img);
