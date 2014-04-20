@@ -1,3 +1,5 @@
+**WARNING:** CHIN does not work with semantic URLs. Link to the thread should end with a number without "/". 
+
 **WARNING:** Installation instructions have changed! Please check them out.
 
 **CHIN** is a small program that downloads images from specified 4chan thread using libcurl or wget.
