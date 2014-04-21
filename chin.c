@@ -93,7 +93,7 @@ int main(int argc, char *argv[]){
 			count--;
 		}
 		/* Workaroung for namespace changes */
-		if(strcmp("boards.4chan.or",boardname)==0)
+		if(strcmp("boards.4chan.or",boardname)==0 || strcmp("boards.4chan.org",boardname)==0)
 		{
 			sprintf(boardname," ");
 			j=strlen(threadnum);
