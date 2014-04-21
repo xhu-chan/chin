@@ -1,8 +1,10 @@
 TODO:
 =====
+* Rewrite cchin
+* -- Replace wget with libcurl
+* -- Make it monitor catalog changes, or at least make it archive threads in reverse bump order
 * File format banning
 * External configuration files
-* Reverse bump order archiving (so threads that are going to be deleted soon are archived first)
 * Create a makefile
 * (optional) Text archiving (partially done)
 * (optional) Endless archiving mode
