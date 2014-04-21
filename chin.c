@@ -76,7 +76,7 @@ int main(int argc, char *argv[]){
 		}
 		
 		 /* Extracts board's name */
-		char boardname[LENGTH]={};
+		char boardname[LENGTH]={"&"};
 		j=strlen(threadnum);
 		i=thrlen-8-j-1;
 		count=0;
@@ -93,9 +93,12 @@ int main(int argc, char *argv[]){
 			count--;
 		}
 		/* Workaroung for namespace changes */
-		if(strcmp("boards.4chan.or",boardname)==0 || strcmp("boards.4chan.org",boardname)==0)
+		if(strcmp("boards.4chan.or",boardname)==0 
+		|| strcmp("boards.4chan.org",boardname)==0
+		|| strcmp("&",boardname)==0)
+
 		{
-			sprintf(boardname," ");
+			memset(&boardname[0], 0, sizeof(boardname));
 			j=strlen(threadnum);
 			i=thrlen-5-j-1;
 			count=0;
