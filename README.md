@@ -61,3 +61,8 @@ Facts:
 * **CHIN** stands for **CHIN Hoards Images Nicely**
 * Shell script with same functionaity would contain less than 10 strings
 * Ability to locally archive images off entire board is surpisingly useful and useless at the same time
+
+Feedback:
+========
+If you encounter any issues, want to make a suggestion or to provide feedback - please contact me
+here or at my e-mail: **voidnull_at_cock.li**
